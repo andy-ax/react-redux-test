@@ -6,6 +6,13 @@
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^12.20.15",
+    "@types/react": "^17.0.9",
+    "@types/react-dom": "^17.0.6",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "babel-eslint": "^10.1.0",
@@ -51,8 +58,11 @@
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-refresh": "^0.8.3",
-    "react-router": "^5.2.0",
+    "react-router": "^3.2.6",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.0.5",
@@ -60,7 +70,9 @@
     "style-loader": "1.3.0",
     "terser-webpack-plugin": "4.2.3",
     "ts-pnp": "1.2.0",
+    "typescript": "^4.3.2",
     "url-loader": "4.1.1",
+    "web-vitals": "^1.1.2",
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.1",
     "webpack-manifest-plugin": "2.2.0",
@@ -145,5 +157,14 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router": "^3.0.24",
+    "@types/react-router-dom": "^5.1.7",
+    "classnames": "^2.3.1",
+    "less": "^4.1.1",
+    "less-loader": "^9.1.0",
+    "sass": "^1.35.1",
+    "scss": "^0.2.4"
   }
 }

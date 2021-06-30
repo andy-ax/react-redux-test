@@ -62,7 +62,9 @@
     "react-refresh": "^0.8.3",
     "react-router": "^3.2.6",
     "react-router-dom": "^5.2.0",
+    "react-router-redux": "^3.0.0",
     "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.0.5",
@@ -161,6 +163,7 @@
   "devDependencies": {
     "@types/react-router": "^3.0.24",
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-router-redux": "^3.0.10",
     "classnames": "^2.3.1",
     "less": "^4.1.1",
     "less-loader": "^9.1.0",

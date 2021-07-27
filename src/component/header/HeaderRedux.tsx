@@ -35,7 +35,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
                 }
             });
         },
-        onEnter: (value: any) => {
+        onEnter: (e: any) => {
+            const value = e.currentTarget.value
             rdc.addDataDispatch({
                 type: LIST_NAME,
                 data: {
@@ -44,6 +45,13 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
                     
                 }
             });
+            rdc.addDataDispatch({
+                type: REDUX_NAME,
+                data: {
+                    countType: 'CHANGE',
+                    payload: '',
+                }
+            })
         }
     };
 }

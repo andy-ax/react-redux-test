@@ -23,17 +23,17 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
         //         }
         //     });
         // },
-        // onChange: (e: any) => {
-        //     let value: any = parseFloat(e.nativeEvent.data);
-        //     value = value !== value ? '' : value;
-        //     rdc.addDataDispatch({
-        //         type: 'COUNT',
-        //         data: {
-        //             countType: 'CHANGE',
-        //             payload: value,
-        //         }
-        //     });
-        // }
+        onChange: (e: any) => {
+            let value: any = parseFloat(e.nativeEvent.data);
+            value = value !== value ? '' : value;
+            rdc.addDataDispatch({
+                type: 'COUNT',
+                data: {
+                    countType: 'CHANGE',
+                    payload: value,
+                }
+            });
+        }
     };
 }
 

@@ -1,6 +1,6 @@
 import React, { Children, Component, MouseEventHandler } from "react";
-import { Cell, Input } from "zarm";
-
+import {Input} from 'antd';
+import 'antd/dist/antd.css';
 class Header extends Component {
     ref: React.RefObject<any>;
     headerInputId = 'headerInput';
@@ -12,24 +12,26 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        document.addEventListener('keydown', e => {
-            const props: any = this.props;
-            if (e.keyCode === 13 && document?.activeElement?.id === this.headerInputId) {
-                props.onEnter(props.data);
-            }
-        })
+        // document.addEventListener('keydown', e => {
+        //     const props: any = this.props;
+        //     if (e.keyCode === 13 && document?.activeElement?.id === this.headerInputId) {
+        //         props.onEnter(props.data);
+        //     }
+        // })
     }
     
     render() {
         const props: any = this.props;
         return (
             <article>
-                <input 
+                <Input 
+                    allowClear
                     id={this.headerInputId}
                     ref={this.ref}
                     value={props.data} 
                     onChange={props.onChange}
-                ></input>
+                    onPressEnter={props.onEnter}
+                ></Input>
             </article>
         );
     }

@@ -13,12 +13,7 @@ class ReduxReducer {
     addReducer(name: string, defaultState: any, reducer: Function) {
         this.reducerMap[name] = (state: any, action: any) => {
             if (action.type === name) {
-                const result = reducer(state, action.data);
-                if (result === undefined) {
-                    return state || null;
-                } else {
-                    return result;
-                }
+                return reducer(state, action.data) || state || null;
             } else {
                 return state || null;
             }

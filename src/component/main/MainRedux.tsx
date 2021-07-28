@@ -23,16 +23,17 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
         //         }
         //     });
         // },
-        onChange: (e: any) => {
-            let value: any = parseFloat(e.nativeEvent.data);
-            value = value !== value ? '' : value;
-            rdc.addDataDispatch({
-                type: 'COUNT',
-                data: {
-                    countType: 'CHANGE',
-                    payload: value,
-                }
-            });
+        onClick: (item: any, index: number, ev:any) => {
+            console.log('onclick exe', ev)
+            if (item.status !== 'invalid') {
+                rdc.addDataDispatch({
+                    type: REDUX_NAME,
+                    data: {
+                        dataType: 'CHANGE',
+                        index,
+                    }
+                })
+            }
         }
     };
 }
@@ -43,11 +44,16 @@ const MainRedux = connect(
 )(Main);
 
 const countReducer = (state: any, data: any) => {
-    if (data?.countType === 'ADD') {
+    if (data?.dataType === 'ADD') {
         return [...state, {
             status: 'wait',
             text: data.value,
         }]
+    } else if (data?.dataType === 'CHANGE') {
+        const item = state[data.index];
+        const status = item.status === 'wait' ? 'completed' : 'wait'
+        item.status = status;
+        return [...state];
     }
 };
 

@@ -119,6 +119,7 @@ class ReduxReducer {
     listenList: listenListType = {};
 
     addDataDispatch(action: any) {
+        console.log('addDataDispatch', action)
         this.store.dispatch(action);
     }
     addFuncDispatch(func: Function) {

@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
             rdc.addDataDispatch({
                 type: REDUX_NAME,
                 data: {
-                    countType: 'ADD',
+                    dataType: 'ADD',
                     payload: 1,
                 }
             });
@@ -30,28 +30,30 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
             rdc.addDataDispatch({
                 type: REDUX_NAME,
                 data: {
-                    countType: 'CHANGE',
+                    dataType: 'CHANGE',
                     payload: value,
                 }
             });
         },
         onEnter: (e: any) => {
             const value = e.currentTarget.value
-            rdc.addDataDispatch({
-                type: LIST_NAME,
-                data: {
-                    countType: 'ADD',
-                    value,
-                    
-                }
-            });
-            rdc.addDataDispatch({
-                type: REDUX_NAME,
-                data: {
-                    countType: 'CHANGE',
-                    payload: '',
-                }
-            })
+            if (value !== '') {
+                rdc.addDataDispatch({
+                    type: LIST_NAME,
+                    data: {
+                        dataType: 'ADD',
+                        value,
+                        
+                    }
+                });
+                rdc.addDataDispatch({
+                    type: REDUX_NAME,
+                    data: {
+                        dataType: 'CHANGE',
+                        payload: '',
+                    }
+                })
+            }
         }
     };
 }
@@ -62,9 +64,9 @@ const HeaderRedux = connect(
 )(Header);
 
 const countReducer = (state: any, data: any) => {
-    if (data?.countType === 'CHANGE') {
+    if (data?.dataType === 'CHANGE') {
         return data.payload;
-    } else if (data?.countType === 'DELETE') {
+    } else if (data?.dataType === 'DELETE') {
         return '';
     }
 };

@@ -1,15 +1,24 @@
 import React, { Children, Component, MouseEventHandler } from 'react';
 import {List, Radio} from 'antd';
 class Main extends Component{
-    liRender(data: any) {
+    liRender(list: any[]) {
         const props: any = this.props
-        return <List.Item key={data.text}>
-            <Radio
-                checked={data.status === 'completed'}
-                disabled={data.status === 'invalid'}
-                onChange={props.onChange(data)}
-            >{data.text}</Radio>
-        </List.Item>
+        console.log('')
+        return list.map((data, i) => {
+            return <List.Item key={data.text}
+            
+                onClick={props.onClick.bind(this, data, i)}
+            >
+                <Radio
+                    checked={data.status === 'completed'}
+                    disabled={data.status === 'invalid'}
+                ></Radio>{data.text}
+            </List.Item>
+        })
+    }
+
+    liKey(data: any) {
+        return "li-key-"+data.text;
     }
 
     render() {
@@ -18,9 +27,9 @@ class Main extends Component{
             <List
                 size="large"
                 bordered
-                dataSource={props.data}
-                renderItem={this.liRender.bind(this)}
-                />
+                >
+                {this.liRender(props.data)}
+            </List>
             {/* <ul>{this.liRender()}</ul> */}
         </article>
     }

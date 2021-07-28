@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Main from './MainUI';
+import ToolTip from './TooltipUI';
 import rdc from '../../redux/redux';
 
 const REDUX_NAME = 'TODOLIST'
@@ -24,6 +24,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
         //     });
         // },
         onClick: (item: any, index: number, ev:any) => {
+            console.log('onclick exe', ev)
             if (item.status !== 'invalid') {
                 rdc.addDataDispatch({
                     type: REDUX_NAME,
@@ -33,9 +34,6 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
                     }
                 })
             }
-        },
-        delete: (index: number, evt: any) => {
-            debugger
         }
     };
 }

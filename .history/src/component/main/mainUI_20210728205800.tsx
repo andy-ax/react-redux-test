@@ -14,7 +14,7 @@ class Main extends Component{
                     checked={data.status === 'completed'}
                     disabled={data.status === 'invalid'}
                 ></Radio>{data.text}
-                <CloseOutlined onClick={props.close.bind(this, i)} />
+                <CloseOutlined />
             </List.Item>
         })
     }

@@ -34,8 +34,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
                 })
             }
         },
-        delete: (index: number, evt: any) => {
-            debugger
+        delete: (index: number, evt: any) {
+
         }
     };
 }

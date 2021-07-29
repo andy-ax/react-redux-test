@@ -1,6 +1,8 @@
 import React, { Children, Component, MouseEventHandler } from 'react';
 import {List, Radio} from 'antd';
-import {CloseOutlined} from '@ant-design/icons'
+import {CloseOutlined, CheckCircleOutlined, CheckCircleTwoTone, ClockCircleOutlined} from '@ant-design/icons'
+import classNames from 'classnames'
+import mainCss from './Main.module.scss';
 class Main extends Component{
     liRender(list: any[]) {
         const props: any = this.props
@@ -10,11 +12,25 @@ class Main extends Component{
             
                 onClick={props.onClick.bind(this, data, i)}
             >
-                <Radio
-                    checked={data.status === 'completed'}
-                    disabled={data.status === 'invalid'}
-                ></Radio>{data.text}
-                <CloseOutlined onClick={props.close.bind(this, i)} />
+                {
+                    data.status === 'wait' ? <div className={mainCss.iconDiv}></div> : data.status === 'invalid' ? <CheckCircleTwoTone className={mainCss.iconStyle} twoToneColor="#ccc" /> : <CheckCircleOutlined className={mainCss.iconStyle} />
+                }{data.text}
+                <CloseOutlined 
+                    title="删除"
+                    className={classNames({
+                        [mainCss.iconStyle]: true,
+                        [mainCss.floatRight]: true
+                    })} 
+                    onClick={props.delete.bind(this, i)} 
+                />
+                <ClockCircleOutlined
+                    title="设置过期"
+                    className={classNames({
+                        [mainCss.iconStyle]: true,
+                        [mainCss.floatRight]: true
+                    })} 
+                    onClick={props.invalid.bind(this, i)} 
+                />
             </List.Item>
         })
     }

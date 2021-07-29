@@ -3,7 +3,8 @@ import {Store} from 'redux';
 import { Provider } from 'react-redux'
 import reduxReducer from './redux/redux';
 import HeaderRedux from './component/header/HeaderRedux';
-import MainRedux from './component/main/MainRedux'
+import MainRedux from './component/main/MainRedux';
+import TooltipRedux from './component/tooltip/TooltipRedux';
 import './App.css'
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
                 ref={this.ref}
             >
                 <HeaderRedux></HeaderRedux>
+                <TooltipRedux></TooltipRedux>
                 <MainRedux></MainRedux>
             </div>
         </Provider>

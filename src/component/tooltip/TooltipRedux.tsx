@@ -14,27 +14,46 @@ const mapStateToProps = (state: any, ownProps: any) => {
 // 绑定方法来触发dispatch
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     return {
-        // onClick: () => {
-        //     rdc.addDataDispatch({
-        //         type: 'COUNT',
-        //         data: {
-        //             countType: 'ADD',
-        //             payload: 1,
-        //         }
-        //     });
-        // },
-        onClick: (item: any, index: number, ev:any) => {
-            console.log('onclick exe', ev)
-            if (item.status !== 'invalid') {
-                rdc.addDataDispatch({
-                    type: REDUX_NAME,
-                    data: {
-                        dataType: 'CHANGE',
-                        index,
-                    }
-                })
-            }
-        }
+        allCompleted: () => {
+            rdc.addDataDispatch({
+                type: REDUX_NAME,
+                data: {
+                    dataType: 'ALL_COMPLETED',
+                }
+            })
+        },
+        allWait: () => {
+            rdc.addDataDispatch({
+                type: REDUX_NAME,
+                data: {
+                    dataType: 'ALL_WAIT',
+                }
+            })
+        },
+        deleteInvalid: () => {
+            rdc.addDataDispatch({
+                type: REDUX_NAME,
+                data: {
+                    dataType: 'DELETE_INVALID',
+                }
+            })
+        },
+        deleteAll: () => {
+            rdc.addDataDispatch({
+                type: REDUX_NAME,
+                data: {
+                    dataType: 'DELETE_ALL',
+                }
+            })
+        },
+        setAllInvalid: () => {
+            rdc.addDataDispatch({
+                type: REDUX_NAME,
+                data: {
+                    dataType: 'SET_ALL_INVALID',
+                }
+            })
+        },
     };
 }
 
@@ -42,34 +61,5 @@ const TooltipRedux = connect(
     mapStateToProps,
     mapDispatchToProps
 )(Tooltip);
-
-const countReducer = (state: any, data: any) => {
-    if (data?.dataType === 'ADD') {
-        return [...state, {
-            status: 'wait',
-            text: data.value,
-        }]
-    } else if (data?.dataType === 'CHANGE') {
-        const item = state[data.index];
-        const status = item.status === 'wait' ? 'completed' : 'wait'
-        item.status = status;
-        return [...state];
-    }
-};
-
-rdc.addReducer(REDUX_NAME, [
-    {
-        status: 'wait',
-        text: '1111',
-    },
-    {
-        status: 'completed',
-        text: '2222',
-    },
-    {
-        status: 'invalid',
-        text: '3333',
-    }
-], countReducer);
 
 export default TooltipRedux;

@@ -14,8 +14,8 @@ const AddCount = () => {
 	};
 	const AppContext = React.createContext({});
 	function TestChild() {
-		const value = useContext(AppContext);
-		return <div>Child1-value: {value}</div>;
+		const value: any = useContext(AppContext);
+		return <div>Child1-value: {value.count}</div>;
 	}
     // useEffect将有副作用的函数提出去，参数二为判断函数是否触发，如果不设置，则所有数据变革时都会触发，如果为[null]则只执行一次
     useEffect(() => {
@@ -27,7 +27,7 @@ const AddCount = () => {
 		<div>
 			<p>{count}</p>
 			<button onClick={addcount}>count++</button>
-			<AppContext.Provider value={[count]}>
+			<AppContext.Provider value={{count}}>
 				<TestChild></TestChild>
 			</AppContext.Provider>
 		</div>
